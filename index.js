@@ -2,7 +2,7 @@ const express = require("express");
 const createError = require("http-errors");
 const logger = require("morgan");
 
-const employeesController = require("./controller/employeesController");
+const graphqlController = require("./controller/graphqlController");
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/employees", employeesController);
+app.use("/graphql", graphqlController);
 
 app.use((req, res, next) => {
   next(createError(404));
